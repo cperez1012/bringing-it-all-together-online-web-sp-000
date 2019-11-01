@@ -76,8 +76,9 @@ class Dog
     sql = <<-SQL
       SELECT name FROM dogs WHERE name = ? LIMIT 1
     SQL
-    result = DB[:conn].execute(sql, name)[1]
-    self.new_from_db(result[0])
+    result = DB[:conn].execute(sql, name).map do |row|
+      self.new_from_db(row)
+    end.first
   end
 
   def update
