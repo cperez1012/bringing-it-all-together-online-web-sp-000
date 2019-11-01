@@ -7,7 +7,6 @@ class Dog
     @id = id
     @name = name
     @breed = breed
-    dog
   end
 
   def self.create_table
