@@ -11,17 +11,17 @@ class Dog
 
   def self.create_table
     sql = <<-SQL
-      CREATE TABLE IF NOT EXISTS students (
+      CREATE TABLE IF NOT EXISTS dogs (
         id INTEGER PRIMARY KEY,
         name TEXT,
-        gade INTEGER
+        breed TEXT
       )
       SQL
     DB[:conn ].execute(sql)
   end
 
   def self.drop_table
-
+    sql = "DROP TABLE IF EXISTS "
   end
 
   def save
