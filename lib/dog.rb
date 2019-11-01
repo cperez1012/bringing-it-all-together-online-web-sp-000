@@ -73,9 +73,10 @@ class Dog
   end
 
   def self.find_by_name(name)
-    sql = "SELECT name FROM dogs WHEREE name =?"
+    sql = <<-SQL 
+      SELECT name FROM dogs WHERE name = ?
     result = DB[:conn].execute(sql, name)[1]
-    self.new(result[1])
+    self.new_from_db(result[0])
   end
 
   def update
