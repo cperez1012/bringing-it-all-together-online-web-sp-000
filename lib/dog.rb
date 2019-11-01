@@ -10,7 +10,7 @@ class Dog
   end
 
   def self.create_table
-
+    
   end
 
   def self.drop_table
@@ -31,16 +31,20 @@ class Dog
     end
   end
 
-  def self.create
-
+  def self.create(name:, breed:)
+    dog = self.new(name, album)
+    dog.save
+    dog
   end
 
   def self.new_from_db
-
+    
   end
 
-  def self.find_by_id
-
+  def self.find_by_id(id)
+    sql = "SELECT * FROM dogs WHERE id = ?"
+    result = DB[:conn].execute(sql, id)[0]
+    self.new(result[0], result[1], result[2])
   end
 
   def self.find_or_create_by
@@ -52,6 +56,7 @@ class Dog
   end
 
   def update
-
+    sql = "UPDATE dogs SET name = ?, breed = ? WHERE ID = ?"
+    DB[:conn].execute(sql, self.name, self.breed)
   end
 end
