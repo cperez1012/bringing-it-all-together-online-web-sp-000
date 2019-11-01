@@ -10,7 +10,7 @@ class Dog
   end
 
   def self.create_table
-    
+
   end
 
   def self.drop_table
@@ -38,7 +38,7 @@ class Dog
   end
 
   def self.new_from_db
-    
+
   end
 
   def self.find_by_id(id)
