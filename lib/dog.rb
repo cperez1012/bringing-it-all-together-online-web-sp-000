@@ -74,7 +74,7 @@ class Dog
 
   def self.find_by_name(name)
     sql = <<-SQL
-      SELECT name FROM dogs WHERE name = ?
+      SELECT name FROM dogs WHERE name = ? LIMIT 1
     SQL
     result = DB[:conn].execute(sql, name)[1]
     self.new_from_db(result[0])
